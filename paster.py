@@ -20,7 +20,6 @@ from socketserver import ThreadingMixIn
 import os
 import math
 import hashlib
-import requests
 import json
 
 # SETTINGS BEGIN
