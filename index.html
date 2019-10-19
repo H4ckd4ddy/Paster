@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<title>Paster</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+		<script>
+			var url = "[url]";
+		</script>
+        <script src="script.js"></script>
+	</head>
+	<body>
+		<div id='main_title'>Paster</div>
+		<a href="https://github.com/H4ckd4ddy/Paster" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="Github-ribbon.png" alt="Fork me on GitHub"></a>
+		<div id='CLI'>
+			<div id='bar'>
+				<div id='title'>Paster - [url]</div>
+				<div id='green'></div>
+				<div id='orange'></div>
+				<div id='red'></div>
+			</div>
+			<div id='texte'>
+				<div id="home">
+					<textarea class="textarea" id="input" placeholder="Write here..."></textarea>
+					<div id="options">
+						<div id="options_title">
+							Delete after :
+						</div>
+						<div id="options_list">
+							<div style="float: left;">
+								<span class="option" id="1-hour">[ ] 1 hour</span>
+								<br/>
+								<span class="option" id="1-week">[ ] 1 week</span>
+							</div>
+							<div style="float: right;">
+								<span class="option" id="1-day">[ ] 1 day</span>
+								<br/>
+								<span class="option" id="1-month">[ ] 1 month</span>
+							</div>
+							<div style="float: bottom;margin-top:5px;">
+								<br/><br/>
+								<span class="option" id="self-destruct">[ ] self-destruct</span>
+							</div>
+						</div>
+					</div>
+					<center><span class="button" onClick="submit_text()" >Protect and share this text</span></center>
+				</div>
+				<div id="show_result">
+					<center><span id="result"></span></center>
+				</div>
+				<div id="show_text">
+					<textarea class="textarea" id="text"></textarea>
+				</div>
+			</div>
+		</div>
+		<a href="https://contact.sellan.fr"><div id="author">Etienne SELLAN</div></a>
+	</body>
+</html>

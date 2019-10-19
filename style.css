@@ -1,0 +1,144 @@
+body, input {
+	font-family: courier,arial;
+	color: white;
+}
+#main_title {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	color: #009900;
+	font-weight: bold;
+	font-size: 30px;
+}
+#CLI {
+	height: 450px;
+	width: 700px;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: black;
+	border-radius: 0 0 7px 7px;
+}
+
+#CLI #bar {
+	position: absolute;
+	top: -25px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 25px;
+	border-radius: 7px 7px 0 0;
+	background: #e0e0e0;
+	text-align: center;
+}
+
+#CLI #bar #title {
+	font-size: 80%;
+	color: #757575;
+	margin-top: 5px;
+}
+#CLI #bar #green {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	height: 15px;
+	width: 15px;
+	border-radius: 25px;
+	background: #3cba3c;
+	border: solid 1px grey;
+}
+#CLI #bar #orange {
+	position: absolute;
+	top: 5px;
+	right: 33px;
+	height: 15px;
+	width: 15px;
+	border-radius: 25px;
+	background: #fcbd51;
+	border: solid 1px grey;
+}
+#CLI #bar #red {
+	position: absolute;
+	top: 5px;
+	right: 56px;
+	height: 15px;
+	width: 15px;
+	border-radius: 25px;
+	background: #ff5757;
+	border: solid 1px grey;
+}
+#texte {
+	font-size: 15px;
+}
+#home {
+	display: none;
+}
+.textarea {
+	background: none;
+	color: white;
+	border: none;
+	outline: none;
+	resize: none;
+	font-family: inherit;
+	width: 98%;
+	padding: 5px;
+	font-size: 15px;
+}
+#input {
+	height: 300px;
+}
+#options {
+	border-top: solid 1px white;
+	border-bottom: solid 1px white;
+	width: 60%;
+	height: 55px;
+	margin: 0 20% 20px 20%;
+	padding: 10px 0 10px 0;
+	position: relative;
+}
+#options #options_title {
+	float: left;
+	height: 100%;
+	width: 40%;
+}
+#options #options_list {
+	float: right;
+	height: 100%;
+	width: 60%;
+}
+.option {
+	cursor: pointer;
+}
+.button {
+	border: solid 2px white;
+	padding: 6px;
+	cursor: pointer;
+}
+.button:hover {
+	border-color: grey;
+}
+#show_result {
+	display: none;
+	padding: 100px;
+}
+#show_text {
+	display: none;
+}
+#text {
+	height: 98%;
+}
+.error {
+	color: red;
+}
+#author {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	color: #808080;
+}
+.grecaptcha-badge {
+	visibility: hidden;
+}
