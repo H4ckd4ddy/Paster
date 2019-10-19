@@ -72,6 +72,7 @@ body, input {
 }
 #texte {
 	font-size: 15px;
+	height: 100%;
 }
 #home {
 	display: none;
@@ -126,9 +127,10 @@ body, input {
 }
 #show_text {
 	display: none;
+	height: 100%;
 }
 #text {
-	height: 98%;
+	height: 95%;
 }
 .error {
 	color: red;

@@ -29,9 +29,8 @@ settings["url"] = "https://paster.sellan.fr"
 settings["listen_address"] = "0.0.0.0"
 settings["port"] = 80
 settings["directory"] = "/tmp"
-settings["delete_limit"] = (30 * 24)  # hours
-settings["cleaning_interval"] = 1  # hours
-settings["max_text_length"] = 32768  # chars
+settings["cleaning_interval"] = 10  # minutes
+settings["max_text_length"] = 1048576  # chars
 settings["enable_logs"] = False
 settings["logs_path"] = "/var/log"
 # SETTINGS END
@@ -108,7 +107,6 @@ class request_handler(BaseHTTPRequestHandler):
             # Send HTML page with replaced data
             html = homepage.read()
             html = html.replace("[url]", settings["url"])
-            html = html.replace("[delete_limit]", human_readable_time(int(settings["delete_limit"]) * 60 * 60))
             self.wfile.write(str.encode(html))
         return
 
@@ -173,8 +171,6 @@ class request_handler(BaseHTTPRequestHandler):
             
             if os.path.exists(array_to_path(self.file_path)):
                 with open(array_to_path(self.file_path), 'r') as self.file:
-                    # Load file stats
-                    self.file.stat = os.fstat(self.file.fileno())
 
                     self.send_response(200)
                     self.send_header("Content-Type", 'application/json')
@@ -237,15 +233,18 @@ def clean_files():
     # Create list of deleted files
     removed = []
     now = time.time()
-    # Compute the limit_date from setings
-    limit_date = now - (int(settings["delete_limit"]) * 3600)
-    
+
     for file in os.listdir(array_to_path(directory)):
         if os.path.isfile(array_to_path(directory+[file])):
-            # Get informations about this file
-            stats = os.stat(array_to_path(directory+[file]))
-            timestamp = stats.st_mtime
-            if timestamp < limit_date:
+            with open(array_to_path(directory+[file]), 'r') as f:
+                delete = True
+                try:
+                    data = json.loads(f.read())
+                    if data['deletion'] > int(now):
+                        delete = False
+                except:
+                    pass
+            if delete:
                 removed.append(file)
                 os.remove(array_to_path(directory+[file]))
 
@@ -259,5 +258,5 @@ if __name__ == "__main__":
     server.start()
     initialisation()
     # Launch auto cleaning interval
-    set_interval(clean_files, (int(settings["cleaning_interval"]) * 3600))
+    set_interval(clean_files, (int(settings["cleaning_interval"]) * 60))
     signal.pause()

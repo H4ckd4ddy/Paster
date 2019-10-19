@@ -1,8 +1,8 @@
 var delay_options = {
-	'1-hour': {'text':'1 hour', 'seconds': 3600, 'selected': true},
-	'1-day': {'text':'1 day', 'seconds': 86400, 'selected': false},
-	'1-week': {'text':'1 week', 'seconds': 604800, 'selected': false},
-	'1-month': {'text':'1 month', 'seconds': 18144000, 'selected': false},
+	'1-hour': {'text':'1 hour', 'seconds': (60*60), 'selected': true},
+	'1-day': {'text':'1 day', 'seconds': (60*60*24), 'selected': false},
+	'1-week': {'text':'1 week', 'seconds': (60*60*24*7), 'selected': false},
+	'1-month': {'text':'1 month', 'seconds': (60*60*24*30), 'selected': false},
 };
 var destruction_option = {
 	'text': 'self-destruct',
@@ -190,7 +190,7 @@ async function submit_text(){
 		encrypted_text.options = ["self-destruct"];
 	}
 
-	encrypted_text.deletion = (Date.now() + get_delay());
+	encrypted_text.deletion = Math.round((Date.now()/1000) + get_delay());
 
 	var data = 'text_id='+text_id+"&encrypted_text="+JSON.stringify(encrypted_text);
 	send_data(data, show_link, key);
